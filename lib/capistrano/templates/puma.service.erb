@@ -15,8 +15,7 @@ Description=Puma HTTP Server for <%= "#{fetch(:application)} (#{fetch(:stage)})"
 After=syslog.target network.target
 
 [Service]
-Type=notify
-WatchdogSec=10
+Type=simple
 <%="User=#{puma_user(@role)}" if fetch(:puma_systemctl_user) == :system -%>
 WorkingDirectory=<%= current_path %>
 # Support older bundler versions where file descriptors weren't kept
